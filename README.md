@@ -43,6 +43,30 @@ use those informations to get the correct translation object.
 Note that the translation object can be used with the 'translate' method with given parameter, but you also can use printf 
 functions if you put traditionnal '%s' or else in your string, by using 'getValue' instead.
 
+## Creating a GKF Translation file
+
+Simply create a text file with your favorite text editor. We advise you to use the '.gkf' extension to recognize those files
+but this is not a rule. Below is an example of a very simple file, wich can be used with the given example above.
+
+```
+
+? example-french.gkf
+? There is just one translation named HELLO. 
+
+l fr
+
+t HELLO ? Bonjour , %0 :-) !
+d HELLO ? The 'hello' sentence.
+
+```
+
+- *l* is a keyword to indicate wich language code can use this file.
+- *t* defines a translation with a KEY and a VALUE, or add a VALUE to the KEY if it already exists. 
+- *d* defines a translation with a KEY and a DEFINITION, or add a DEFINITION to the KEY if it already exists.
+
+For *t* and *d*, the *?* indicates the parser that the rest of the line is the value. Every *?* in beginning of a line 
+indicates a comment and is so ignored (or stored in the LocaleFile structure).
+
 ## Compiling
 
 You have to use CMake to generate a project. Then use the generated project to make the library.
