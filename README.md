@@ -69,7 +69,15 @@ indicates a comment and is so ignored (or stored in the LocaleFile structure).
 
 ## Compiling
 
-You have to use CMake to generate a project. Then use the generated project to make the library.
+You have to use CMake to generate a project. Then use the generated project to make the library. 
+
+## Uninstalling
+
+If you installed the library with the headers, you can uninstall it using the simple command below : 
+
+```
+cat install_manifest.txt | xargs rm
+```
 
 ## Things to do
 

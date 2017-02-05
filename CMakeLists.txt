@@ -20,13 +20,9 @@ include_directories(${CMAKE_SOURCE_DIR}/inc)
 # Enable C++11.
 set(CMAKE_CXX_FLAGS "--std=c++11 ${CMAKE_CXX_FLAGS}")
 
-set(HEADERS
-    ./inc/Base.h
-    ./inc/Exceptions.h
-    ./inc/LocaleFile.h
-    ./inc/Locales.h
-    ./inc/Translation.h
-)
+# Sets the headers files.
+file(GLOB headersfile "${CMAKE_CURRENT_SOURCE_DIR}/inc/*.h")
+set(HEADERS ${headersfile})
 
 set(SOURCE_FILES
     ./src/Exceptions.cpp
@@ -71,3 +67,10 @@ else()
     set_property(TARGET gkf PROPERTY CXX_STANDARD_REQUIRED ON)
 
 endif(${CMAKE_GENERATOR} MATCHES "Xcode")
+
+# Setting the install command
+install(FILES ${headersfile} DESTINATION "include/GKF")
+install(TARGETS gkf 
+    LIBRARY DESTINATION lib
+)
+
